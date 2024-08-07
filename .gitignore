@@ -1,0 +1,13 @@
+### python ###
+__pycache__
+
+### macOS ###
+# General
+.DS_Store
+
+### Database ###
+db/db-store
+
+
+### Vertial Environment ###
+.venv

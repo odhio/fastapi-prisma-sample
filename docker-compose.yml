@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: api
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres
+    volumes:
+      - ./app:/app
+    working_dir: /app
+
+  postgres:
+    container_name: postgres
+    image: postgres:16.0
+    env_file:
+      - ./.env
+    environment:
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=C"
+    volumes:
+      - ./db/db-store:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
